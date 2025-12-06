@@ -103,8 +103,39 @@
             border-radius: 50px;
             font-size: 0.95rem;
             font-weight: 400;
-
+            transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
         }
+
+        .skill-item:hover{
+            background-color: rgba(0, 0, 0, 0.06);
+            border-color: #353535;
+            border-radius: 60px;
+            transform: translateY(-2px);
+        }
+
+        .skill-item[aria-pressed="true"] {
+            background-color: rgba(0, 0, 0, 0.08);
+            border-color: #000;
+        }
+        
+        .skill-info {
+           margin-top: 1rem;
+           padding: 0.9rem 1rem;
+           border-radius: 8px;
+           background: rgba(0,0,0,0.03);
+           color: #111;
+           font-size: 0.98rem;
+           transition: opacity 180ms ease, transform 180ms ease;
+           opacity: 0;
+           transform: translateY(4px);
+           pointer-events: none;
+       }
+
+       .skill-info.visible {
+           opacity: 1;
+           transform: translateY(0);
+           pointer-events: auto;
+       }
 
         .projects {
             display: grid;
@@ -232,18 +263,21 @@
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills">
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Google Cloud Project</div>
-                <div class="skill-item">Flask</div>
-                <div class="skill-item">Langgraph & Langchain</div>
-                <div class="skill-item">Firebase</div>
-                <div class="skill-item">NoSQL</div>
-                <div class="skill-item">Java</div>
-                <div class="skill-item">Git</div>
-                <div class="skill-item">Docker</div>
-                <div class="skill-item">REST APIs</div>
-                <div class="skill-item">Cypress</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Python — experience writing scripts, web services (Flask/FastAPI), main programming language for most of my projects.">Python</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Google Cloud — GCP projects, IAM, Cloud Run, Cloud Functions, Secret Manager, basic infrastructure.">Google Cloud Project</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Langgraph & Langchain — building LLM pipelines and prompt orchestration for agentic workflows utilising Vertex & Gen AI.">Langgraph & Langchain</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Agentic AI — creating agents that interact with tools and APIs for autonomous tasks, using cache and memory for state management.">Agentic AI</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Git — branching, PR workflow, code review and CI/CD basics.">Git</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Firebase — Firestore, Authentication, Security Rules (cloud storage and firestore).">Firebase</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="NoSQL — data modelling for document stores, indexing and query patterns.">NoSQL</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Java — university projects and backend work using standard libraries - creating a prototype board game Dead of Winter.">Java</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Flask — building small APIs, templating, and deployment.">Flask</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Docker — containerising apps for cloud run functions and basic image builds.">Docker</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="REST APIs — designing endpoints, versioning, and JSON-based contracts.">REST APIs</div>
+                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Cypress — E2E testing for web apps with test automation and CI integration.">Cypress</div>
             </div>
+            <div id="skill-info" class="skill-info" aria-live="polite" hidden></div>
+
         </section>
 
         <!-- TODO: Add projects here! -->
@@ -298,5 +332,40 @@
     <footer>
         <p>&copy; 2025 Devi Faustine. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Simple accessible toggle: clicking or pressing Enter/Space on a chip shows details in the below panel.
+        (function(){
+            const skills = document.querySelectorAll('.skill-item');
+            const info = document.getElementById('skill-info');
+
+            function showDetail(el) {
+                const text = el.getAttribute('data-detail') || '';
+                // mark selected
+                skills.forEach(s => s.setAttribute('aria-pressed', s === el ? 'true' : 'false'));
+                info.textContent = text;
+                info.hidden = false;
+                info.classList.add('visible');
+            }
+            skills.forEach(el => {
+                el.addEventListener('click', () => {
+                    showDetail(el);
+                });
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showDetail(el);
+                    }
+                    // optional: Escape clears selection
+                    if (e.key === 'Escape') {
+                        el.setAttribute('aria-pressed', 'false');
+                        info.hidden = true;
+                        info.classList.remove('visible');
+                    }
+                });
+            });
+        })();
+    </script>
+
 </body>
 </html>
