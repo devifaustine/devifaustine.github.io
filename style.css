@@ -2,7 +2,7 @@
    DEVI FAUSTINE — SHARED STYLES
    ══════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap');
 
 :root {
     /* palette */
@@ -24,18 +24,18 @@
     --card-bg:        #fffbf5;
 
     /* font scale — edit here to resize everything */
-    --fs-2xs: 0.55rem;
-    --fs-xs:  0.65rem;
-    --fs-sm:  0.75rem;
-    --fs-md:  0.85rem;
-    --fs-lg:  1.05rem;
-    --fs-xl:  1.65rem;
+    --fs-2xs: 0.85rem;
+    --fs-xs:  1rem;
+    --fs-sm:  1.15rem;
+    --fs-md:  1.3rem;
+    --fs-lg:  1.5rem;
+    --fs-xl:  2.4rem;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'Pixelify Sans', monospace;
     line-height: 2;
     color: var(--text);
     background-color: var(--bg);
@@ -50,7 +50,7 @@ body {
     position: fixed;
     top: 1rem; right: 1rem;
     z-index: 999;
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'Pixelify Sans', monospace;
     font-size: var(--fs-xs);
     background: var(--yellow);
     border: 3px solid var(--text);
@@ -212,10 +212,10 @@ h2::after  { content: ' ]'; }
 
 /* ── SKILL CHIPS ── */
 .skills { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.skill-item { padding: 0.65rem 1rem; border: 3px solid var(--text); font-size: var(--fs-xs); font-family: 'Press Start 2P', monospace; background: var(--yellow); box-shadow: 4px 4px 0 var(--orange-dark); cursor: pointer; transition: transform 0.08s, box-shadow 0.08s; user-select: none; }
+.skill-item { padding: 0.65rem 1rem; border: 3px solid var(--text); font-size: var(--fs-xs); font-family: 'Pixelify Sans', monospace; background: var(--yellow); box-shadow: 4px 4px 0 var(--orange-dark); cursor: pointer; transition: transform 0.08s, box-shadow 0.08s; user-select: none; }
 .skill-item:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--orange-dark); }
 .skill-item[aria-pressed="true"] { background: var(--green); border-color: var(--green-dark); transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--green-dark); }
-.skill-info { margin-top: 1.5rem; padding: 1.25rem; border: 3px solid var(--blue); box-shadow: 5px 5px 0 var(--blue-dark); background: #eff6ff; font-size: var(--fs-xs); font-family: 'Press Start 2P', monospace; line-height: 2.4; transition: opacity 180ms ease, transform 180ms ease; opacity: 0; transform: translateY(6px); pointer-events: none; }
+.skill-info { margin-top: 1.5rem; padding: 1.25rem; border: 3px solid var(--blue); box-shadow: 5px 5px 0 var(--blue-dark); background: #eff6ff; font-size: var(--fs-xs); font-family: 'Pixelify Sans', monospace; line-height: 2.4; transition: opacity 180ms ease, transform 180ms ease; opacity: 0; transform: translateY(6px); pointer-events: none; }
 .skill-info::before { content: '▶ ITEM INFO'; display: block; color: var(--blue-dark); margin-bottom: 1rem; font-size: var(--fs-2xs); border-bottom: 2px solid var(--blue); padding-bottom: 0.5rem; }
 .skill-info.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
@@ -249,7 +249,7 @@ h2::after  { content: ' ]'; }
 .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-item { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
 .contact-item strong { font-size: var(--fs-xs); color: var(--purple-dark); min-width: 90px; }
-.contact-item a { font-size: var(--fs-xs); font-family: 'Press Start 2P', monospace; color: var(--text); text-decoration: none; background: var(--orange); border: 3px solid var(--text); box-shadow: 4px 4px 0 var(--orange-dark); padding: 0.5rem 0.9rem; display: inline-block; transition: transform 0.08s, box-shadow 0.08s; }
+.contact-item a { font-size: var(--fs-xs); font-family: 'Pixelify Sans', monospace; color: var(--text); text-decoration: none; background: var(--orange); border: 3px solid var(--text); box-shadow: 4px 4px 0 var(--orange-dark); padding: 0.5rem 0.9rem; display: inline-block; transition: transform 0.08s, box-shadow 0.08s; }
 .contact-item a:hover  { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--orange-dark); }
 .contact-item a:active { transform: translate(4px,4px);   box-shadow: none; }
 

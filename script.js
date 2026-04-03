@@ -71,7 +71,7 @@ const i18n = {
         'contact-email':       'Email:',
         'contact-github':      'GitHub:',
         'contact-linkedin':    'LinkedIn:',
-        'footer':              '© 2025 Devi Faustine. All rights reserved.',
+        'footer':              '© 2026 Devi Faustine. All rights reserved.',
     },
     de: {
         'char-class':          'KLASSE: BACKEND-ZAUBERIN',
@@ -142,7 +142,7 @@ const i18n = {
         'contact-email':       'E-Mail:',
         'contact-github':      'GitHub:',
         'contact-linkedin':    'LinkedIn:',
-        'footer':              '© 2025 Devi Faustine. Alle Rechte vorbehalten.',
+        'footer':              '© 2026 Devi Faustine. Alle Rechte vorbehalten.',
     }
 };
 
