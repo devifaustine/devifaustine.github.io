@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devi Faustine — Quests</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="lang-toggle" onclick="toggleLang()">DE</button>
+
+<header>
+    <div class="character-sheet">
+        <div class="sprite-container">
+            <div class="sprite-frame">
+                <img src="char.png" class="character-sprite" alt="Pixel art character of Devi Faustine">
+            </div>
+            <div class="sprite-name-tag">PLAYER 1</div>
+        </div>
+        <div class="character-stats">
+            <div class="character-name">Devi Faustine</div>
+            <div class="character-class" data-i18n="char-class">CLASS: BACKEND SORCERER</div>
+            <div class="stat-row">
+                <span class="stat-label">LVL</span>
+                <span class="stat-value">3</span>
+                <span class="stat-stars">★★★</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div class="stat-fill hp" style="width:82%"></div></div>
+                <span class="stat-num">82/100</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">MP</span>
+                <div class="stat-bar"><div class="stat-fill mp" style="width:95%"></div></div>
+                <span class="stat-num">95/100</span>
+            </div>
+            <div class="mini-stats">
+                <div class="mini-stat"><span class="mini-stat-label">STR</span><span class="mini-stat-value">★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">INT</span><span class="mini-stat-value">★★★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">DEX</span><span class="mini-stat-value">★★★★</span></div>
+            </div>
+            <div class="character-subtitle">
+                <span data-i18n="char-subtitle">Software Developer | Cybersecurity &amp; AI Enthusiast</span><br>
+                <span data-i18n="char-location">► Germany (made in Indonesia)</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html"               data-i18n="nav-about">About</a></li>
+        <li><a href="skills.html"              data-i18n="nav-skills">Skills</a></li>
+        <li><a href="quests.html"       class="active" data-i18n="nav-quests">Quests</a></li>
+        <li><a href="education.html"           data-i18n="nav-education">Education</a></li>
+        <li><a href="achievements.html"        data-i18n="nav-achievements">Achievements</a></li>
+        <li><a href="contact.html"             data-i18n="nav-contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2 data-i18n="h2-quests">Quest Log</h2>
+
+    <div class="quest-card">
+        <div class="quest-header">
+            <span class="quest-status active" data-i18n="quest1-status">[ ACTIVE ]</span>
+            <span class="quest-title" data-i18n="quest1-title">Head of AI Team at Mona AI GmbH</span>
+        </div>
+        <div class="quest-period" data-i18n="quest1-period">► March 2026 - Present</div>
+        <p data-i18n="quest1-p1">Leading the AI team in developing innovative solutions using cutting-edge technologies.</p>
+        <p data-i18n="quest1-p2">Developing AI strategies and driving innovation in the company's AI initiatives.</p>
+        <p data-i18n="quest1-p3">Structuring AI projects and ensuring alignment with business objectives.</p>
+        <div class="quest-rewards">
+            <span class="quest-reward-label" data-i18n="quest-rewards-label">REWARDS:</span>
+            <span class="quest-reward-tag">Leadership</span>
+            <span class="quest-reward-tag">AI Strategy</span>
+            <span class="quest-reward-tag">Team Management</span>
+        </div>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-header">
+            <span class="quest-status done" data-i18n="quest2-status">[ DONE ]</span>
+            <span class="quest-title" data-i18n="quest2-title">Software Developer at Mona AI GmbH</span>
+        </div>
+        <div class="quest-period" data-i18n="quest2-period">► August 2024 - February 2026</div>
+        <p data-i18n="quest2-p1">Developing AI-powered applications, focusing on backend development using Python and cloud services.</p>
+        <p data-i18n="quest2-p2">Developing AI Agents and tools with context cache and memory management utilising Langchain and Langgraph packages.</p>
+        <div class="quest-rewards">
+            <span class="quest-reward-label" data-i18n="quest-rewards-label">REWARDS:</span>
+            <span class="quest-reward-tag">Python +2</span>
+            <span class="quest-reward-tag">GCP +2</span>
+            <span class="quest-reward-tag">Langchain +3</span>
+            <span class="quest-reward-tag">Agentic AI +3</span>
+        </div>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-header">
+            <span class="quest-status done" data-i18n="quest3-status">[ DONE ]</span>
+            <span class="quest-title" data-i18n="quest3-title">Testengineer at ILC GmbH</span>
+        </div>
+        <div class="quest-period" data-i18n="quest3-period">► August 2023 - July 2024</div>
+        <p data-i18n="quest3-p1">Assisted in testing web applications and developing test automation using Cypress.</p>
+        <p data-i18n="quest3-p2">Creating automated test suites and cases for the web application incl. documenting bugs and tickets in Redmine.</p>
+        <div class="quest-rewards">
+            <span class="quest-reward-label" data-i18n="quest-rewards-label">REWARDS:</span>
+            <span class="quest-reward-tag">Cypress +3</span>
+            <span class="quest-reward-tag">QA Mindset</span>
+            <span class="quest-reward-tag">CI/CD</span>
+        </div>
+    </div>
+</div>
+
+<footer><p data-i18n="footer">© 2025 Devi Faustine. All rights reserved.</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

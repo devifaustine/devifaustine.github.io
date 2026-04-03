@@ -3,397 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devi Faustine - Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #000;
-            background: #fff;
-        }
-
-        header {
-            padding: 6rem 2rem 4rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #666;
-        }
-
-        nav {
-            padding: 1rem 2rem;
-            border-bottom: 1px solid #d2d2d7;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: #000;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.6;
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        section {
-            margin-bottom: 8rem;
-        }
-
-        h2 {
-            font-size: 3rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-
-        .about-text p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            color: #1d1d1f;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-item {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid #666;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 400;
-            transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
-        }
-
-        .skill-item:hover{
-            background-color: rgba(0, 0, 0, 0.06);
-            border-color: #353535;
-            border-radius: 60px;
-            transform: translateY(-2px);
-        }
-
-        .skill-item[aria-pressed="true"] {
-            background-color: rgba(0, 0, 0, 0.08);
-            border-color: #000;
-        }
-        
-        .skill-info {
-           margin-top: 1rem;
-           padding: 0.9rem 1rem;
-           border-radius: 8px;
-           background: rgba(0,0,0,0.03);
-           color: #111;
-           font-size: 0.98rem;
-           transition: opacity 180ms ease, transform 180ms ease;
-           opacity: 0;
-           transform: translateY(4px);
-           pointer-events: none;
-       }
-
-       .skill-info.visible {
-           opacity: 1;
-           transform: translateY(0);
-           pointer-events: auto;
-       }
-
-        .projects {
-            display: grid;
-            gap: 3rem;
-        }
-
-        .project-card {
-            padding: 2rem 0;
-            border-bottom: 1px solid #d2d2d7;
-        }
-
-        .project-card:last-child {
-            border-bottom: none;
-        }
-
-        .project-card h3 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .project-card p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-        }
-
-        .project-links a {
-            color: #000;
-            text-decoration: none;
-            margin-right: 2rem;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #000;
-            padding-bottom: 2px;
-            transition: opacity 0.3s;
-        }
-
-        .project-links a:hover {
-            opacity: 0.6;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .contact-item strong {
-            min-width: 100px;
-            font-weight: 500;
-        }
-
-        .contact-item a {
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1px solid #000;
-            padding-bottom: 1px;
-            transition: opacity 0.3s;
-        }
-
-        .contact-item a:hover {
-            opacity: 0.6;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid #d2d2d7;
-            margin-top: 5rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-        }
-    </style>
+    <title>Devi Faustine — About</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Devi Faustine</h1>
-        <p>Software Developer | Cybersecurity & AI Enthusiast</p>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experiences">Experiences</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<button id="lang-toggle" onclick="toggleLang()">DE</button>
 
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-text">
-                <p>Hi! I'm a software developer with expertise in Python, GCP, Firebase, REST API, and Langchain.
-                    I'm based in Germany but made in Indonesia :D, studied at University of Saarland majoring in Cybersecurity.</p>
-                <p>Happy to give you some insights on my personal projects and get to know me.</p>
+<header>
+    <div class="character-sheet">
+        <div class="sprite-container">
+            <div class="sprite-frame">
+                <img src="char.png" class="character-sprite" alt="Pixel art character of Devi Faustine">
             </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Python — experience writing scripts, web services (Flask/FastAPI), main programming language for most of my projects and for the past years of my career and education.">Python</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Google Cloud — Developing backeng with GCP whilst taking care of the deployment. IAM, Cloud Run and Functions, Secret Manager, Cloud Logging, Firestore, Cloud Storage and its security rules.">Google Cloud Project</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Langgraph & Langchain — building agents and features with LLM utilising Vertex & Gen AI via Langchain with Langgraph packages.">Langgraph & Langchain</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Agentic AI — creating agents that interact with tools and APIs for autonomous tasks, using cache and memory for state management.">Agentic AI</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Git — Github Actions, CI/CD basics.">Git</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Flask & FastAPI — building web applications and REST APIs with Python, including authentication, database integration, and deployment.">Flask</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Firebase — using Firestore for real-time database needs, Firebase Authentication for user management, and Firebase Hosting for static web hosting.">Firebase</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="NoSQL — data modelling for document stores, indexing and query patterns (Firebase).">NoSQL</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Docker — containerising apps for cloud run functions and basic image builds.">Docker</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="REST APIs — designing endpoints, versioning, and JSON-based contracts.">REST APIs</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Cypress — E2E testing for web apps with test automation and CI integration.">Cypress</div>
-                <div class="skill-item" tabindex="0" role="button" aria-pressed="false" data-detail="Java — university projects and backend work using standard libraries - creating a prototype board game Dead of Winter and tic tac toe.">Java</div>
+            <div class="sprite-name-tag">PLAYER 1</div>
+        </div>
+        <div class="character-stats">
+            <div class="character-name">Devi Faustine</div>
+            <div class="character-class" data-i18n="char-class">CLASS: BACKEND SORCERER</div>
+            <div class="stat-row">
+                <span class="stat-label">LVL</span>
+                <span class="stat-value">3</span>
+                <span class="stat-stars">★★★</span>
             </div>
-            <div id="skill-info" class="skill-info" aria-live="polite" hidden></div>
-
-        </section>
-
-        <section id="experiences">
-            <h2>Job Experiences</h2>
-            <div class="about-text">
-                <p><strong>Head of AI Team at Mona AI GmbH</strong> (March 2026 - Present)</p>
-                <p>Leading the AI team in developing innovative solutions using cutting-edge technologies.</p>
-                <p>Developing AI strategies and driving innovation in the company's AI initiatives.</p>
-                <p>Structuring AI projects and ensuring alignment with business objectives.</p>
-                <p><strong>Software Developer at Mona AI GmbH</strong> (August 2024 - February 2026)</p>
-                <p>Developing AI-powered applications, focusing on backend development using Python and cloud services.</p>
-                <p>Developing AI Agents and tools with context cache and memory management utilising Langchain and Langgraph packages.</p>
-                <p><strong>Testengineer at ILC GmbH</strong> (August 2023 - July 2024)</p>
-                <p>Assisted in testing web applications and developing test automation using Cypress.</p>
-                <p>Creating automated test suites and cases for the web application incl. documenting bugs and tickets in Redmine.</p>
-            </section>
-
-        <!-- TODO: Add projects here! -->
-        <!-- <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>AI Agent</h3>
-                    <p>Implement an AI agent with a set of tools specifically for recruiting and hiring automation using langchain.</p> -->
-                    <!-- <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Live Demo</a>
-                    </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="project-card">
-                    <h3></h3>
-                    <p>Data visualization dashboard using Python and Flask. Analyzes large datasets and presents insights through interactive charts and graphs.</p>
-                    <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Live Demo</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>RESTful API service for a e-commerce platform. Built with FastAPI, featuring authentication, payment processing, and inventory management.</p>
-                    <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Documentation</a>
-                    </div>
-                </div> -->
-            <!-- </div>
-        </section> -->
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="about-text">
-                <p><strong>University of Saarland</strong> (2020 - 2024)</p>
-                <p>Bachelor's Degree in Cybersecurity with focus on digital signatures and automation. Relevant coursework includes Network Security, Cryptography, and Secure Software Development.</p>
+            <div class="stat-bar-row">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div class="stat-fill hp" style="width:82%"></div></div>
+                <span class="stat-num">82/100</span>
             </div>
-            <div class="about-text">
-                <p><strong>Studienkolleg in Hochschule Kaiserslautern</strong> (2019 - 2020)</p>
-                <p>College of Applied Sciences for T-Kurs in Kaiserslautern, Germany. Focused on preparing for university studies in Computer Science.</p>
+            <div class="stat-bar-row">
+                <span class="stat-label">MP</span>
+                <div class="stat-bar"><div class="stat-fill mp" style="width:95%"></div></div>
+                <span class="stat-num">95/100</span>
             </div>
-        </section>
+            <div class="mini-stats">
+                <div class="mini-stat"><span class="mini-stat-label">STR</span><span class="mini-stat-value">★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">INT</span><span class="mini-stat-value">★★★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">DEX</span><span class="mini-stat-value">★★★★</span></div>
+            </div>
+            <div class="character-subtitle">
+                <span data-i18n="char-subtitle">Software Developer | Cybersecurity &amp; AI Enthusiast</span><br>
+                <span data-i18n="char-location">► Germany (made in Indonesia)</span>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>Email:</strong> <a href="mailto:devifaustine.df@gmail.com">devifaustine.df@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <strong>GitHub:</strong> <a href="https://github.com/devifaustine" target="_blank">github.com/devifaustine</a>
-                </div>
-                <div class="contact-item">
-                    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/devifaustine" target="_blank">linkedin.com/in/devifaustine</a>
-                </div>
-            </div>
-        </section>
+<nav>
+    <ul>
+        <li><a href="index.html"        class="active" data-i18n="nav-about">About</a></li>
+        <li><a href="skills.html"              data-i18n="nav-skills">Skills</a></li>
+        <li><a href="quests.html"              data-i18n="nav-quests">Quests</a></li>
+        <li><a href="education.html"           data-i18n="nav-education">Education</a></li>
+        <li><a href="achievements.html"        data-i18n="nav-achievements">Achievements</a></li>
+        <li><a href="contact.html"             data-i18n="nav-contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2 data-i18n="h2-about">About Me</h2>
+
+    <div class="about-text">
+        <p data-i18n="about-p1">Hi! I'm a software developer with expertise in Python, GCP, Firebase, REST API, and Langchain. I'm based in Germany but made in Indonesia :D, studied at University of Saarland majoring in Cybersecurity.</p>
+        <p data-i18n="about-p2">Happy to give you some insights on my personal projects and get to know me.</p>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Devi Faustine. All rights reserved.</p>
-    </footer>
+    <div class="bio-card">
+        <div class="bio-card-header" data-i18n="bio-header">▶ CHARACTER BIO</div>
+        <div class="bio-body">
+            <div class="bio-traits">
+                <div class="bio-trait">
+                    <span class="bio-trait-icon">🎮</span>
+                    <div>
+                        <span class="bio-trait-name" data-i18n="bio-gaming-name">GAMING</span>
+                        <span class="bio-trait-desc" data-i18n="bio-gaming-desc">Avid gamer — probably why pixel UIs feel like home.</span>
+                    </div>
+                </div>
+                <div class="bio-trait">
+                    <span class="bio-trait-icon">🍳</span>
+                    <div>
+                        <span class="bio-trait-name" data-i18n="bio-cooking-name">COOKING</span>
+                        <span class="bio-trait-desc" data-i18n="bio-cooking-desc">Enjoys experimenting in the kitchen — debugging recipes one dish at a time.</span>
+                    </div>
+                </div>
+                <div class="bio-trait">
+                    <span class="bio-trait-icon">🧁</span>
+                    <div>
+                        <span class="bio-trait-name" data-i18n="bio-baking-name">BAKING</span>
+                        <span class="bio-trait-desc" data-i18n="bio-baking-desc">Dedicated baker who treats it like precision engineering.</span>
+                    </div>
+                </div>
+                <div class="bio-trait">
+                    <span class="bio-trait-icon">📚</span>
+                    <div>
+                        <span class="bio-trait-name" data-i18n="bio-reading-name">READING</span>
+                        <span class="bio-trait-desc" data-i18n="bio-reading-desc">Loves a good book — fiction or non-fiction, both welcome.</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="bio-divider">
+            <div class="bio-podcast">
+                <span class="bio-podcast-icon">🎙️</span>
+                <div>
+                    <span class="bio-podcast-label" data-i18n="bio-listening-label">CURRENTLY LISTENING</span>
+                    <span class="bio-podcast-name" data-i18n="bio-listening-text">Founders &amp; Acquired — fascinated by the stories behind companies and the people who build them.</span>
+                </div>
+            </div>
+            <div class="bio-lore" data-i18n="bio-lore">Bakes for everyone else. Does not eat sweets. The most selfless chaotic neutral you'll ever meet.</div>
+        </div>
+    </div>
+</div>
 
-    <script>
-        // Simple accessible toggle: clicking or pressing Enter/Space on a chip shows details in the below panel.
-        (function(){
-            const skills = document.querySelectorAll('.skill-item');
-            const info = document.getElementById('skill-info');
+<footer><p data-i18n="footer">© 2025 Devi Faustine. All rights reserved.</p></footer>
 
-            function showDetail(el) {
-                const text = el.getAttribute('data-detail') || '';
-                // mark selected
-                skills.forEach(s => s.setAttribute('aria-pressed', s === el ? 'true' : 'false'));
-                info.textContent = text;
-                info.hidden = false;
-                info.classList.add('visible');
-            }
-            skills.forEach(el => {
-                el.addEventListener('click', () => {
-                    showDetail(el);
-                });
-                el.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        showDetail(el);
-                    }
-                    // optional: Escape clears selection
-                    if (e.key === 'Escape') {
-                        el.setAttribute('aria-pressed', 'false');
-                        info.hidden = true;
-                        info.classList.remove('visible');
-                    }
-                });
-            });
-        })();
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>

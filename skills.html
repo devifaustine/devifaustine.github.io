@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devi Faustine — Skills</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="lang-toggle" onclick="toggleLang()">DE</button>
+
+<header>
+    <div class="character-sheet">
+        <div class="sprite-container">
+            <div class="sprite-frame">
+                <img src="char.png" class="character-sprite" alt="Pixel art character of Devi Faustine">
+            </div>
+            <div class="sprite-name-tag">PLAYER 1</div>
+        </div>
+        <div class="character-stats">
+            <div class="character-name">Devi Faustine</div>
+            <div class="character-class" data-i18n="char-class">CLASS: BACKEND SORCERER</div>
+            <div class="stat-row">
+                <span class="stat-label">LVL</span>
+                <span class="stat-value">3</span>
+                <span class="stat-stars">★★★</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div class="stat-fill hp" style="width:82%"></div></div>
+                <span class="stat-num">82/100</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">MP</span>
+                <div class="stat-bar"><div class="stat-fill mp" style="width:95%"></div></div>
+                <span class="stat-num">95/100</span>
+            </div>
+            <div class="mini-stats">
+                <div class="mini-stat"><span class="mini-stat-label">STR</span><span class="mini-stat-value">★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">INT</span><span class="mini-stat-value">★★★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">DEX</span><span class="mini-stat-value">★★★★</span></div>
+            </div>
+            <div class="character-subtitle">
+                <span data-i18n="char-subtitle">Software Developer | Cybersecurity &amp; AI Enthusiast</span><br>
+                <span data-i18n="char-location">► Germany (made in Indonesia)</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html"               data-i18n="nav-about">About</a></li>
+        <li><a href="skills.html"       class="active" data-i18n="nav-skills">Skills</a></li>
+        <li><a href="quests.html"              data-i18n="nav-quests">Quests</a></li>
+        <li><a href="education.html"           data-i18n="nav-education">Education</a></li>
+        <li><a href="achievements.html"        data-i18n="nav-achievements">Achievements</a></li>
+        <li><a href="contact.html"             data-i18n="nav-contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2 data-i18n="h2-skills">Skills</h2>
+
+    <div class="skill-bars">
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Python</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 5</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">REST APIs</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 4</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Google Cloud</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 4</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Langchain</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 4</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Agentic AI</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 4</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Flask</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 4</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Firebase</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 3</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Docker</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 3</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Git</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 3</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">NoSQL</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 3</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Cypress</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 3</span>
+        </div>
+        <div class="skill-bar-row">
+            <span class="skill-bar-name">Java</span>
+            <div class="skill-bar-track">
+                <div class="skill-bar-block filled"></div><div class="skill-bar-block filled"></div>
+                <div class="skill-bar-block"></div><div class="skill-bar-block"></div>
+                <div class="skill-bar-block"></div>
+            </div>
+            <span class="skill-bar-lvl">LVL 2</span>
+        </div>
+    </div>
+
+    <div class="skill-divider" data-i18n="skill-divider">— INVENTORY —</div>
+
+    <div class="skills">
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Python — experience writing scripts, web services (Flask/FastAPI), main programming language for most of my projects and for the past years of my career and education.">Python</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Google Cloud — Developing backend with GCP whilst taking care of the deployment. IAM, Cloud Run and Functions, Secret Manager, Cloud Logging, Firestore, Cloud Storage and its security rules.">Google Cloud Project</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Langgraph & Langchain — building agents and features with LLM utilising Vertex & Gen AI via Langchain with Langgraph packages.">Langgraph &amp; Langchain</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Agentic AI — creating agents that interact with tools and APIs for autonomous tasks, using cache and memory for state management.">Agentic AI</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Git — Github Actions, CI/CD basics.">Git</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Flask & FastAPI — building web applications and REST APIs with Python, including authentication, database integration, and deployment.">Flask</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Firebase — using Firestore for real-time database needs, Firebase Authentication for user management, and Firebase Hosting for static web hosting.">Firebase</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="NoSQL — data modelling for document stores, indexing and query patterns (Firebase).">NoSQL</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Docker — containerising apps for cloud run functions and basic image builds.">Docker</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="REST APIs — designing endpoints, versioning, and JSON-based contracts.">REST APIs</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Cypress — E2E testing for web apps with test automation and CI integration.">Cypress</div>
+        <div class="skill-item" tabindex="0" role="button" aria-pressed="false"
+             data-detail="Java — university projects and backend work using standard libraries - creating a prototype board game Dead of Winter and tic tac toe.">Java</div>
+    </div>
+    <div id="skill-info" class="skill-info" aria-live="polite" hidden></div>
+</div>
+
+<footer><p data-i18n="footer">© 2025 Devi Faustine. All rights reserved.</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

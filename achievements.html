@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devi Faustine — Achievements</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="lang-toggle" onclick="toggleLang()">DE</button>
+
+<header>
+    <div class="character-sheet">
+        <div class="sprite-container">
+            <div class="sprite-frame">
+                <img src="char.png" class="character-sprite" alt="Pixel art character of Devi Faustine">
+            </div>
+            <div class="sprite-name-tag">PLAYER 1</div>
+        </div>
+        <div class="character-stats">
+            <div class="character-name">Devi Faustine</div>
+            <div class="character-class" data-i18n="char-class">CLASS: BACKEND SORCERER</div>
+            <div class="stat-row">
+                <span class="stat-label">LVL</span>
+                <span class="stat-value">3</span>
+                <span class="stat-stars">★★★</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div class="stat-fill hp" style="width:82%"></div></div>
+                <span class="stat-num">82/100</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">MP</span>
+                <div class="stat-bar"><div class="stat-fill mp" style="width:95%"></div></div>
+                <span class="stat-num">95/100</span>
+            </div>
+            <div class="mini-stats">
+                <div class="mini-stat"><span class="mini-stat-label">STR</span><span class="mini-stat-value">★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">INT</span><span class="mini-stat-value">★★★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">DEX</span><span class="mini-stat-value">★★★★</span></div>
+            </div>
+            <div class="character-subtitle">
+                <span data-i18n="char-subtitle">Software Developer | Cybersecurity &amp; AI Enthusiast</span><br>
+                <span data-i18n="char-location">► Germany (made in Indonesia)</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html"               data-i18n="nav-about">About</a></li>
+        <li><a href="skills.html"              data-i18n="nav-skills">Skills</a></li>
+        <li><a href="quests.html"              data-i18n="nav-quests">Quests</a></li>
+        <li><a href="education.html"           data-i18n="nav-education">Education</a></li>
+        <li><a href="achievements.html" class="active" data-i18n="nav-achievements">Achievements</a></li>
+        <li><a href="contact.html"             data-i18n="nav-contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2 data-i18n="h2-achievements">Achievements</h2>
+
+    <div class="achievements-grid">
+        <div class="achievement">
+            <span class="achievement-icon">⚔️</span>
+            <div class="achievement-name" data-i18n="ach1-name">TEAM LEADER</div>
+            <div class="achievement-desc" data-i18n="ach1-desc">Promoted to Head of AI Team — leading the charge.</div>
+        </div>
+        <div class="achievement">
+            <span class="achievement-icon">🤖</span>
+            <div class="achievement-name" data-i18n="ach2-name">AI PIONEER</div>
+            <div class="achievement-desc" data-i18n="ach2-desc">Built production-ready agentic AI systems from scratch.</div>
+        </div>
+        <div class="achievement">
+            <span class="achievement-icon">☁️</span>
+            <div class="achievement-name" data-i18n="ach3-name">CLOUD MAGE</div>
+            <div class="achievement-desc" data-i18n="ach3-desc">Deployed and managed full GCP backend infrastructure.</div>
+        </div>
+        <div class="achievement">
+            <span class="achievement-icon">🔐</span>
+            <div class="achievement-name" data-i18n="ach4-name">CYBERSEC SCHOLAR</div>
+            <div class="achievement-desc" data-i18n="ach4-desc">Bachelor's in Cybersecurity — University of Saarland.</div>
+        </div>
+        <div class="achievement">
+            <span class="achievement-icon">🌏</span>
+            <div class="achievement-name" data-i18n="ach5-name">WORLD TRAVELER</div>
+            <div class="achievement-desc" data-i18n="ach5-desc">Indonesia → Germany. Unlocked international career.</div>
+        </div>
+        <div class="achievement">
+            <span class="achievement-icon">🧪</span>
+            <div class="achievement-name" data-i18n="ach6-name">QA GUARDIAN</div>
+            <div class="achievement-desc" data-i18n="ach6-desc">Mastered E2E testing and CI automation with Cypress.</div>
+        </div>
+    </div>
+</div>
+
+<footer><p data-i18n="footer">© 2025 Devi Faustine. All rights reserved.</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
