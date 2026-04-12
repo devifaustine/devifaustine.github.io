@@ -1,4 +1,32 @@
 // ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+
+const NAV_LINKS = [
+    { page: 'about',        href: 'index.html',        key: 'nav-about',        label: 'About' },
+    { page: 'skills',       href: 'skills.html',       key: 'nav-skills',       label: 'Skills' },
+    { page: 'quests',       href: 'quests.html',       key: 'nav-quests',       label: 'Quests' },
+    { page: 'education',    href: 'education.html',    key: 'nav-education',    label: 'Education' },
+    { page: 'achievements', href: 'achievements.html', key: 'nav-achievements', label: 'Achievements' },
+    { page: 'contact',      href: 'contact.html',      key: 'nav-contact',      label: 'Contact' },
+];
+
+const SKILL_BARS = [
+    { name: 'Python',       level: 5 },
+    { name: 'REST APIs',    level: 4 },
+    { name: 'Google Cloud', level: 4 },
+    { name: 'Langchain',    level: 4 },
+    { name: 'Agentic AI',   level: 4 },
+    { name: 'Flask',        level: 4 },
+    { name: 'Firebase',     level: 3 },
+    { name: 'Docker',       level: 3 },
+    { name: 'Git',          level: 3 },
+    { name: 'NoSQL',        level: 3 },
+    { name: 'Cypress',      level: 3 },
+    { name: 'Java',         level: 2 },
+];
+
+// ════════════════════════════════════════
 // TRANSLATIONS
 // ════════════════════════════════════════
 const i18n = {
@@ -147,11 +175,85 @@ const i18n = {
 };
 
 // ════════════════════════════════════════
+// SHARED SHELL (header + nav)
+// ════════════════════════════════════════
+
+function buildShell(activePage) {
+    const navItems = NAV_LINKS.map(({ page, href, key, label }) =>
+        `<li><a href="${href}"${page === activePage ? ' class="active"' : ''} data-i18n="${key}">${label}</a></li>`
+    ).join('\n        ');
+
+    return `<button id="lang-toggle" onclick="toggleLang()">DE</button>
+<header>
+    <div class="character-sheet">
+        <div class="sprite-container">
+            <div class="sprite-frame">
+                <img src="char.png" class="character-sprite" alt="Pixel art character of Devi Faustine">
+            </div>
+            <div class="sprite-name-tag">PLAYER 1</div>
+        </div>
+        <div class="char-main">
+            <div class="character-name">Devi Faustine</div>
+            <div class="character-class" data-i18n="char-class">CLASS: BACKEND SORCERER</div>
+            <div class="stat-row">
+                <span class="stat-label">LVL</span>
+                <span class="stat-value">3</span>
+                <span class="stat-stars">★★★</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar"><div class="stat-fill hp" style="width:82%"></div></div>
+                <span class="stat-num">82/100</span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-label">MP</span>
+                <div class="stat-bar"><div class="stat-fill mp" style="width:95%"></div></div>
+                <span class="stat-num">95/100</span>
+            </div>
+        </div>
+        <div class="char-side">
+            <div class="mini-stats">
+                <div class="mini-stat"><span class="mini-stat-label">STR</span><span class="mini-stat-value">★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">INT</span><span class="mini-stat-value">★★★★★</span></div>
+                <div class="mini-stat"><span class="mini-stat-label">DEX</span><span class="mini-stat-value">★★★★</span></div>
+            </div>
+            <div class="character-subtitle">
+                <span data-i18n="char-subtitle">Software Developer | Cybersecurity &amp; AI Enthusiast</span><br>
+                <span data-i18n="char-location">► Germany (made in Indonesia)</span>
+            </div>
+        </div>
+    </div>
+</header>
+<nav>
+    <ul>
+        ${navItems}
+    </ul>
+</nav>`;
+}
+
+// ════════════════════════════════════════
+// SKILL BARS
+// ════════════════════════════════════════
+
+function renderSkillBars(container) {
+    const MAX = 5;
+    container.innerHTML = SKILL_BARS.map(({ name, level }) => {
+        const blocks = Array.from({ length: MAX }, (_, i) =>
+            `<div class="skill-bar-block${i < level ? ' filled' : ''}"></div>`
+        ).join('');
+        return `<div class="skill-bar-row">
+            <span class="skill-bar-name">${name}</span>
+            <div class="skill-bar-track">${blocks}</div>
+            <span class="skill-bar-lvl">LVL ${level}</span>
+        </div>`;
+    }).join('\n');
+}
+
+// ════════════════════════════════════════
 // LANGUAGE SWITCHER
 // ════════════════════════════════════════
 
 // Priority: URL param → localStorage → default 'en'
-// This ensures language persists across page navigations even on file:// protocol.
 function getLangFromURL() {
     return new URLSearchParams(window.location.search).get('lang');
 }
@@ -161,20 +263,18 @@ let currentLang = getLangFromURL() || localStorage.getItem('lang') || 'en';
 function setLang(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (i18n[lang] && i18n[lang][key] !== undefined) {
-            el.textContent = i18n[lang][key];
-        }
+        if (i18n[lang]?.[key] !== undefined) el.textContent = i18n[lang][key];
     });
     currentLang = lang;
     localStorage.setItem('lang', lang);
 
-    // Rewrite all nav links to carry ?lang= so it survives page navigation
+    // Rewrite nav links to carry ?lang= across page navigations
     document.querySelectorAll('nav a').forEach(a => {
         try {
             const url = new URL(a.getAttribute('href'), window.location.href);
             url.searchParams.set('lang', lang);
             a.href = url.pathname + url.search;
-        } catch (e) { /* skip external links */ }
+        } catch { /* skip external links */ }
     });
 
     const btn = document.getElementById('lang-toggle');
@@ -189,29 +289,36 @@ function toggleLang() {
 // ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener('DOMContentLoaded', () => {
+    const page = document.body.dataset.page || 'about';
+    document.body.insertAdjacentHTML('afterbegin', buildShell(page));
+
     setLang(currentLang);
 
-    // Skill chips (only on skills.html)
-    const skills = document.querySelectorAll('.skill-item');
-    const info   = document.getElementById('skill-info');
-    if (!skills.length || !info) return;
+    const skillBarsEl = document.querySelector('.skill-bars');
+    if (skillBarsEl) renderSkillBars(skillBarsEl);
+
+    // Skill chips (skills page only)
+    const skillItems = document.querySelectorAll('.skill-item');
+    const skillInfo  = document.getElementById('skill-info');
+    if (!skillItems.length || !skillInfo) return;
 
     function showDetail(el) {
-        skills.forEach(s => s.setAttribute('aria-pressed', s === el ? 'true' : 'false'));
-        info.textContent = el.getAttribute('data-detail') || '';
-        info.hidden = false;
-        info.classList.add('visible');
+        skillItems.forEach(s => s.setAttribute('aria-pressed', s === el ? 'true' : 'false'));
+        skillInfo.textContent = el.getAttribute('data-detail') || '';
+        skillInfo.hidden = false;
+        skillInfo.classList.add('visible');
     }
 
-    skills.forEach(el => {
+    skillItems.forEach(el => {
         el.addEventListener('click', () => showDetail(el));
         el.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showDetail(el); }
             if (e.key === 'Escape') {
                 el.setAttribute('aria-pressed', 'false');
-                info.hidden = true;
-                info.classList.remove('visible');
+                skillInfo.hidden = true;
+                skillInfo.classList.remove('visible');
             }
         });
     });
