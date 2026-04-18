@@ -87,7 +87,7 @@ const i18n = {
         'ach1-name':           'TEAM LEADER',
         'ach1-desc':           'Promoted to Head of AI Team — leading the charge.',
         'ach2-name':           'AI PIONEER',
-        'ach2-desc':           'Built production-ready agentic AI systems from scratch.',
+        'ach2-desc':           'Built AI Chat system.',
         'ach3-name':           'CLOUD MAGE',
         'ach3-desc':           'Deployed and managed full GCP backend infrastructure.',
         'ach4-name':           'CYBERSEC SCHOLAR',
