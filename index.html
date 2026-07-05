@@ -3,67 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devi Faustine — About</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Devi Faustine — Portfolio</title>
+    <meta name="description" content="Devi Faustine — software developer. Python, GCP, Firebase, REST API, Langchain. Play the journey!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap">
+    <link rel="stylesheet" href="portfolio.css">
 </head>
-<body data-page="about">
+<body>
 
-<div class="container">
-    <h2 data-i18n="h2-about">About Me</h2>
+<nav>
+    <ul>
+        <li style="--i:0"><a href="#hero"><span class="nav-arrow">► </span>About</a></li>
+        <li style="--i:1"><a href="#journey"><span class="nav-arrow">► </span>Journey</a></li>
+        <li style="--i:2"><a href="#skills"><span class="nav-arrow">► </span>Skills</a></li>
+        <li style="--i:3"><a href="#achievements"><span class="nav-arrow">► </span>Achievements</a></li>
+        <li style="--i:4"><a href="#contact"><span class="nav-arrow">► </span>Contact</a></li>
+    </ul>
+</nav>
 
-    <div class="about-text">
-        <p data-i18n="about-p1">Hi! I'm a software developer with expertise in Python, GCP, Firebase, REST API, and Langchain. I'm based in Germany but made in Indonesia :D, studied at University of Saarland majoring in Cybersecurity.</p>
-        <p data-i18n="about-p2">Happy to give you some insights on my personal projects and get to know me.</p>
-    </div>
-
-    <div class="bio-card">
-        <div class="bio-card-header" data-i18n="bio-header">▶ CHARACTER BIO</div>
-        <div class="bio-body">
-            <div class="bio-traits">
-                <div class="bio-trait">
-                    <span class="bio-trait-icon">🎮</span>
-                    <div>
-                        <span class="bio-trait-name" data-i18n="bio-gaming-name">GAMING</span>
-                        <span class="bio-trait-desc" data-i18n="bio-gaming-desc">Avid gamer — probably why pixel UIs feel like home.</span>
-                    </div>
-                </div>
-                <div class="bio-trait">
-                    <span class="bio-trait-icon">🍳</span>
-                    <div>
-                        <span class="bio-trait-name" data-i18n="bio-cooking-name">COOKING</span>
-                        <span class="bio-trait-desc" data-i18n="bio-cooking-desc">Enjoys experimenting in the kitchen — debugging recipes one dish at a time.</span>
-                    </div>
-                </div>
-                <div class="bio-trait">
-                    <span class="bio-trait-icon">🧁</span>
-                    <div>
-                        <span class="bio-trait-name" data-i18n="bio-baking-name">BAKING</span>
-                        <span class="bio-trait-desc" data-i18n="bio-baking-desc">Dedicated baker who treats it like precision engineering.</span>
-                    </div>
-                </div>
-                <div class="bio-trait">
-                    <span class="bio-trait-icon">📚</span>
-                    <div>
-                        <span class="bio-trait-name" data-i18n="bio-reading-name">READING</span>
-                        <span class="bio-trait-desc" data-i18n="bio-reading-desc">Loves a good book — fiction or non-fiction, both welcome.</span>
-                    </div>
-                </div>
+<header id="hero">
+    <div class="hero-inner">
+        <div class="hero-sprite">
+            <div class="hero-sprite-frame">
+                <img src="char.png" alt="Devi Faustine sprite">
             </div>
-            <hr class="bio-divider">
-            <div class="bio-podcast">
-                <span class="bio-podcast-icon">🎙️</span>
-                <div>
-                    <span class="bio-podcast-label" data-i18n="bio-listening-label">CURRENTLY LISTENING</span>
-                    <span class="bio-podcast-name" data-i18n="bio-listening-text">Founders &amp; Acquired — fascinated by the stories behind companies and the people who build them.</span>
-                </div>
-            </div>
-            <div class="bio-lore" data-i18n="bio-lore">Bakes for everyone else. Does not eat sweets. The most selfless chaotic neutral you'll ever meet.</div>
+            <div class="hero-player-tag">PLAYER 1</div>
+        </div>
+
+        <div class="hero-main">
+            <div class="hero-name">Devi Faustine<span class="hero-cursor">_</span></div>
+            <div class="hero-class">CLASS: BACKEND SORCERER</div>
+            <p class="hero-bio">Hi! I'm a software developer with expertise in Python, GCP, Firebase, REST API, and Langchain. Based in Germany, made in Indonesia :D.</p>
+            <div class="hero-hint">▼ PLAY THE JOURNEY BELOW</div>
+        </div>
+
+        <div class="traits-card">
+            <div class="traits-header">▶ TRAITS</div>
+            <div class="trait"><span class="trait-icon">🎮</span><span class="trait-name">GAMING</span></div>
+            <div class="trait"><span class="trait-icon">🍳</span><span class="trait-name">COOKING</span></div>
+            <div class="trait"><span class="trait-icon">🧁</span><span class="trait-name">BAKING</span></div>
+            <div class="trait"><span class="trait-icon">📚</span><span class="trait-name">READING</span></div>
+            <div class="traits-lore">⚠ LORE: Bakes for everyone, eats none of it herself.</div>
         </div>
     </div>
+</header>
+
+<section id="journey">
+    <div class="journey-head">
+        <div class="journey-title">[ THE JOURNEY ]</div>
+        <div class="journey-progress" id="journey-progress">0 / 8 coins</div>
+    </div>
+
+    <div id="game-viewport" tabindex="0" role="application" aria-label="The Journey mini-game. Use A and D or arrow keys to walk, W or space to jump.">
+        <div id="game-world"></div>
+        <div id="game-hint"><div>► CLICK HERE<br>TO WALK ►</div></div>
+    </div>
+
+    <div class="journey-controls">
+        <div class="journey-keys">◄ A / D to walk · W / SPACE to jump bugs and grab coins</div>
+        <div class="touch-buttons">
+            <button id="btn-left" type="button" aria-label="Walk left">◀</button>
+            <button id="btn-jump" type="button" aria-label="Jump">⤒</button>
+            <button id="btn-right" type="button" aria-label="Walk right">▶</button>
+        </div>
+    </div>
+</section>
+
+<div class="transition-strip"></div>
+
+<div class="paper">
+
+    <section id="skills">
+        <h2 class="pixel-h2">[ Skills ]</h2>
+        <div class="skill-bars" id="skill-bars"></div>
+        <div class="inventory-divider">— INVENTORY —</div>
+        <div class="inventory" id="inventory"></div>
+        <div id="skill-info" hidden>
+            <div class="skill-info-head">▶ ITEM INFO</div>
+            <span id="skill-info-text"></span>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="pixel-h2">[ Achievements ]</h2>
+        <div class="achievements-grid">
+            <div class="achievement" style="--i:0">
+                <span class="achievement-icon">⚔️</span>
+                <div class="achievement-name">TEAM LEADER</div>
+                <div class="achievement-desc">Promoted to Head of AI Team — leading the charge.</div>
+            </div>
+            <div class="achievement" style="--i:1">
+                <span class="achievement-icon">🤖</span>
+                <div class="achievement-name">AI PIONEER</div>
+                <div class="achievement-desc">Built AI Chat system.</div>
+            </div>
+            <div class="achievement" style="--i:2">
+                <span class="achievement-icon">☁️</span>
+                <div class="achievement-name">CLOUD MAGE</div>
+                <div class="achievement-desc">Deployed and managed full GCP backend infrastructure.</div>
+            </div>
+            <div class="achievement" style="--i:3">
+                <span class="achievement-icon">🔐</span>
+                <div class="achievement-name">CYBERSEC SCHOLAR</div>
+                <div class="achievement-desc">Bachelor's in Cybersecurity — University of Saarland.</div>
+            </div>
+            <div class="achievement" style="--i:4">
+                <span class="achievement-icon">🌏</span>
+                <div class="achievement-name">WORLD TRAVELER</div>
+                <div class="achievement-desc">Indonesia → Germany. Unlocked international career.</div>
+            </div>
+            <div class="achievement" style="--i:5">
+                <span class="achievement-icon">🧪</span>
+                <div class="achievement-name">QA GUARDIAN</div>
+                <div class="achievement-desc">Mastered E2E testing and CI automation with Cypress.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="pixel-h2">[ Contact ]</h2>
+        <div class="contact-list">
+            <div class="contact-row" style="--i:0">
+                <strong>Email:</strong>
+                <a href="mailto:devifaustine.df@gmail.com">devifaustine.df@gmail.com</a>
+            </div>
+            <div class="contact-row" style="--i:1">
+                <strong>GitHub:</strong>
+                <a href="https://github.com/devifaustine" target="_blank" rel="noopener">github.com/devifaustine</a>
+            </div>
+            <div class="contact-row" style="--i:2">
+                <strong>LinkedIn:</strong>
+                <a href="https://linkedin.com/in/devifaustine" target="_blank" rel="noopener">linkedin.com/in/devifaustine</a>
+            </div>
+        </div>
+    </section>
+
+    <footer><span class="star-accent">★ </span>© 2026 Devi Faustine. All rights reserved.<span class="star-accent"> ★</span></footer>
 </div>
 
-<footer><p data-i18n="footer">© 2026 Devi Faustine. All rights reserved.</p></footer>
-
-<script src="script.js"></script>
+<script src="portfolio.js"></script>
 </body>
 </html>
