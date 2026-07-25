@@ -407,6 +407,37 @@ footer.site-foot{
     .topbar-links{gap:0.9rem;}
     .topbar-links a:not(.pill-btn){display:none;}
 }
+@media (max-width:480px){
+    .topbar-inner{padding-top:0.9rem; padding-bottom:0.9rem;}
+    .mark{width:32px; height:32px; font-size:0.85rem;}
+
+    header#hero{padding-top:2.2rem;}
+    .hero-cta-row{flex-direction:column; align-items:stretch;}
+    .btn-primary, .btn-ghost{justify-content:center;}
+    .terminal-card{transform:none;}
+
+    .section-head h2{max-width:none;}
+
+    .trait-grid{gap:10px;}
+    .bento-trait{padding:16px;}
+
+    .skill-bar-row{gap:0.6rem;}
+    .skill-bar-name{min-width:0; flex:1 1 100px; font-size:0.88rem;}
+    .skill-bar-block{width:14px; height:9px;}
+    .inv-item{padding:0.6rem 0.85rem;}
+
+    .tl-item{grid-template-columns:20px 1fr; gap:0 1rem;}
+    .tl-item::before{left:9px;}
+    .tl-crossing{flex-direction:column; align-items:flex-start; gap:0.5rem; padding:1rem;}
+
+    .achievement{padding:1.1rem;}
+    .entry-card{padding:1.1rem;}
+
+    .contact-row{padding:1rem 0.1rem;}
+    .cta-footer h2{max-width:none;}
+
+    footer.site-foot{justify-content:center; text-align:center;}
+}
 @media (prefers-reduced-motion: reduce){
     .marquee-track{animation:none;}
     .caret{animation:none;}
