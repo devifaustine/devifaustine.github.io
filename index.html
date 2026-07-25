@@ -4,143 +4,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devi Faustine — Portfolio</title>
-    <meta name="description" content="Devi Faustine — software developer. Python, GCP, Firebase, REST API, Langchain. Play the journey!">
+    <meta name="description" content="Devi Faustine — software developer. Python, GCP, Firebase, REST API, Langchain.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
 
-<nav>
-    <ul>
-        <li style="--i:0"><a href="#hero"><span class="nav-arrow">► </span>About</a></li>
-        <li style="--i:1"><a href="#journey"><span class="nav-arrow">► </span>Journey</a></li>
-        <li style="--i:2"><a href="#skills"><span class="nav-arrow">► </span>Skills</a></li>
-        <li style="--i:3"><a href="#achievements"><span class="nav-arrow">► </span>Achievements</a></li>
-        <li style="--i:4"><a href="#contact"><span class="nav-arrow">► </span>Contact</a></li>
-    </ul>
+<svg class="icon-defs" aria-hidden="true" focusable="false">
+    <!-- Flight -->
+    <symbol id="icon-plane" viewBox="0 0 24 24">
+        <mask id="m-plane"><rect width="24" height="24" fill="#fff"/><path d="M10,13 L22,3" stroke="#000" stroke-width="1"/></mask>
+        <polygon mask="url(#m-plane)" points="2,12 22,3 13,22 10,13"/>
+    </symbol>
+</svg>
+
+<div class="spotlight" aria-hidden="true"></div>
+
+<nav class="topbar">
+    <div class="topbar-inner">
+        <a class="mark" href="#hero" aria-label="Home">DF</a>
+        <ul class="topbar-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#path">Path</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a class="pill-btn" href="#contact">Say hi</a></li>
+        </ul>
+    </div>
 </nav>
 
 <header id="hero">
-    <div class="hero-inner">
-        <div class="hero-sprite">
-            <div class="hero-sprite-frame">
-                <img src="char.png" alt="Devi Faustine sprite">
+    <div class="hero-grid">
+        <div class="hero-left">
+            <p class="eyebrow">Software Developer · Berlin, Germany</p>
+            <h1 class="hero-name">Devi<br><span class="last">Faustine</span></h1>
+            <div class="role-ticker">
+                <div class="role-ticker-track" id="role-track">
+                    <span>Backend Engineer</span>
+                    <span>AI Systems Builder</span>
+                    <span>Cybersecurity Grad</span>
+                    <span>Occasional Baker</span>
+                </div>
             </div>
-            <div class="hero-player-tag">PLAYER 1</div>
+            <p class="hero-bio">I build <b>AI agents and backend systems</b> that ship — Python, GCP, LangChain, REST APIs. Currently leading the AI team at Mona AI. Made in Indonesia, based in Germany, powered by things I bake and rarely eat.</p>
+            <div class="hero-cta-row">
+                <a class="btn-primary" href="#path">See the path →</a>
+                <a class="btn-ghost" href="#contact">Get in touch</a>
+            </div>
         </div>
 
-        <div class="hero-main">
-            <div class="hero-name">Devi Faustine<span class="hero-cursor">_</span></div>
-            <div class="hero-class">CLASS: BACKEND SORCERER</div>
-            <p class="hero-bio">Hi! I'm a software developer with expertise in Python, GCP, Firebase, REST API, and Langchain. Based in Germany, made in Indonesia :D.</p>
-            <div class="hero-hint">▼ PLAY THE JOURNEY BELOW</div>
-        </div>
-
-        <div class="traits-card">
-            <div class="traits-header">▶ TRAITS</div>
-            <div class="trait"><span class="trait-icon">🎮</span><span class="trait-name">GAMING</span></div>
-            <div class="trait"><span class="trait-icon">🍳</span><span class="trait-name">COOKING</span></div>
-            <div class="trait"><span class="trait-icon">🧁</span><span class="trait-name">BAKING</span></div>
-            <div class="trait"><span class="trait-icon">📚</span><span class="trait-name">READING</span></div>
-            <div class="traits-lore">⚠ LORE: Bakes for everyone, eats none of it herself.</div>
+        <div class="hero-right">
+            <div class="terminal-card">
+                <div class="terminal-bar"><span></span><span></span><span></span><span class="terminal-title">whoami.sh</span></div>
+                <pre class="terminal-body"><code id="typed"></code><span class="caret">&nbsp;</span></pre>
+            </div>
+            <div class="tag-cluster">
+                <span class="tag-pill" style="--r:-3deg">Python</span>
+                <span class="tag-pill" style="--r:2deg">GCP</span>
+                <span class="tag-pill" style="--r:-1deg">LangChain</span>
+                <span class="tag-pill" style="--r:3deg">Firebase</span>
+                <span class="tag-pill" style="--r:-2deg">REST API</span>
+                <span class="tag-pill" style="--r:1deg">Cybersecurity</span>
+            </div>
         </div>
     </div>
 </header>
 
-<section id="journey">
-    <div class="journey-head">
-        <div class="journey-title">[ THE JOURNEY ]</div>
-        <div class="journey-progress" id="journey-progress">0 / 8 coins</div>
-    </div>
+<div class="marquee-band" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track"></div>
+</div>
 
-    <div id="game-viewport" tabindex="0" role="application" aria-label="The Journey mini-game. Use A and D or arrow keys to walk, W or space to jump.">
-        <div id="game-world"></div>
-        <div id="game-hint"><div>► CLICK HERE<br>TO WALK ►</div></div>
-    </div>
-
-    <div class="journey-controls">
-        <div class="journey-keys">◄ A / D to walk · W / SPACE to jump bugs and grab coins</div>
-        <div class="touch-buttons">
-            <button id="btn-left" type="button" aria-label="Walk left">◀</button>
-            <button id="btn-jump" type="button" aria-label="Jump">⤒</button>
-            <button id="btn-right" type="button" aria-label="Walk right">▶</button>
+<section id="about" class="band-light section-pad">
+    <div class="section-inner">
+        <div class="section-head">
+            <p class="eyebrow">About</p>
+            <h2>Backend engineer with a soft spot for good cake.</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-main reveal">
+                <p>I'm a software developer specializing in Python, GCP, Firebase, and building AI agents with LangChain — currently Head of AI Team at Mona AI GmbH, where I structure agentic systems.</p>
+                <p>Before backend and AI, I studied Cybersecurity at Universität des Saarlandes and cut my teeth writing test automation. Outside of work, you'll find me deep in a game, in the kitchen, or both at once.</p>
+            </div>
+            <div class="trait-grid">
+                <div class="bento-trait c-cherry reveal">
+                    <img class="trait-icon" src="assets/game_console_logo-removebg-preview.png" alt="" aria-hidden="true">
+                    <span class="trait-name">Gaming</span>
+                    <span class="trait-desc">RPGs mostly — occupational hazard.</span>
+                </div>
+                <div class="bento-trait c-olive reveal">
+                    <img class="trait-icon" src="assets/cooking_logo2-removebg-preview.png" alt="" aria-hidden="true">
+                    <span class="trait-name">Cooking</span>
+                    <span class="trait-desc">Indonesian food, from memory.</span>
+                </div>
+                <div class="bento-trait c-butter reveal">
+                    <img class="trait-icon" src="assets/cupcake_lgoo-removebg-preview.png" alt="" aria-hidden="true">
+                    <span class="trait-name">Baking</span>
+                    <span class="trait-desc">Bakes for everyone, barely eats any of it.</span>
+                </div>
+                <div class="bento-trait c-ink reveal">
+                    <img class="trait-icon" src="assets/book_logo-removebg-preview.png" alt="" aria-hidden="true">
+                    <span class="trait-name">Reading</span>
+                    <span class="trait-desc">Currently mid-stack on the to-read pile.</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="transition-strip"></div>
-
-<div class="paper">
-
-    <section id="skills">
-        <h2 class="pixel-h2">[ Skills ]</h2>
+<section id="skills" class="band-dark section-pad">
+    <div class="section-inner">
+        <div class="section-head">
+            <p class="eyebrow">Skills</p>
+            <h2>The stack, ranked by mastery.</h2>
+        </div>
         <div class="skill-bars" id="skill-bars"></div>
-        <div class="inventory-divider">— INVENTORY —</div>
+        <div class="inventory-divider">— Inventory —</div>
         <div class="inventory" id="inventory"></div>
         <div id="skill-info" hidden>
-            <div class="skill-info-head">▶ ITEM INFO</div>
             <span id="skill-info-text"></span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="achievements">
-        <h2 class="pixel-h2">[ Achievements ]</h2>
+<section id="path" class="band-light section-pad">
+    <div class="section-inner">
+        <div class="section-head">
+            <p class="eyebrow">Path</p>
+            <h2>Indonesia to Germany, one production incident at a time.</h2>
+        </div>
+        <ol class="timeline">
+            <li class="tl-item reveal">
+                <div class="tl-period">Origin</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Start</span>
+                    <h3 class="tl-role">Indonesia</h3>
+                    <div class="tl-org">Home base</div>
+                    <p class="tl-desc">Made in Indonesia — home base, level 1.</p>
+                </div>
+            </li>
+            <li class="tl-item reveal">
+                <div class="tl-period">Language Prep</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Gema Sprachenzentrum</h3>
+                    <div class="tl-org">Language school</div>
+                    <p class="tl-desc">Studied German to prepare for life abroad.</p>
+                    <div class="tl-tags"><span>B2 Zertifikat</span></div>
+                </div>
+            </li>
+            <li class="tl-item reveal">
+                <div class="tl-period">Visa Process</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Deutsche Botschaft</h3>
+                    <div class="tl-org">German Embassy, Indonesia</div>
+                    <p class="tl-desc">Applied for a student visa.</p>
+                    <div class="tl-tags"><span>Visa</span></div>
+                </div>
+            </li>
+
+            <li class="tl-crossing reveal">
+                <svg class="xi"><use href="#icon-plane"></use></svg>
+                <div>
+                    <div class="xt">Flight to Germany</div>
+                    <div class="xd">Indonesia → Germany. Unlocked international career.</div>
+                </div>
+            </li>
+
+            <li class="tl-item reveal">
+                <div class="tl-period">2019 — 2020</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Studienkolleg Kaiserslautern</h3>
+                    <div class="tl-org">Hochschule Kaiserslautern</div>
+                    <p class="tl-desc">T-Kurs preparing for university studies in Computer Science. Achieved C1 level in German and started learning Java.</p>
+                </div>
+            </li>
+            <li class="tl-item reveal">
+                <div class="tl-period">2020 — 2024</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Universität des Saarlandes</h3>
+                    <div class="tl-org">Bachelor's in Cybersecurity</div>
+                    <p class="tl-desc">Foundations of Cybersecurity, Cryptography, and Secure Software Development. Thesis focusing on Post Quantum Blind Signatures.</p>
+                    <div class="tl-tags"><span>Bachelor's Degree</span></div>
+                </div>
+            </li>
+            <li class="tl-item reveal">
+                <div class="tl-period">2023 — 2024</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Test Engineer</h3>
+                    <div class="tl-org">ILC GmbH · Part-time</div>
+                    <p class="tl-desc">E2E testing and Cypress automation, Quality Assurance, and documenting bugs in Redmine.</p>
+                    <div class="tl-tags"><span>Cypress</span><span>QA</span><span>CI/CD</span></div>
+                </div>
+            </li>
+            <li class="tl-item reveal">
+                <div class="tl-period">2024 — 2026</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Done</span>
+                    <h3 class="tl-role">Software Developer</h3>
+                    <div class="tl-org">Mona AI GmbH</div>
+                    <p class="tl-desc">AI-powered backend applications in Python on GCP, and AI agents with tools, context caching and memory management using LangChain and LangGraph.</p>
+                    <div class="tl-tags"><span>Python</span><span>GCP</span><span>LangChain</span></div>
+                </div>
+            </li>
+            <li class="tl-item active reveal">
+                <div class="tl-period">Mar 2026 — Present</div>
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-status">Active</span>
+                    <h3 class="tl-role">Head of AI Team</h3>
+                    <div class="tl-org">Mona AI GmbH</div>
+                    <p class="tl-desc">Leading the AI team building agentic systems - interview scheduling agents with Twilio and calendar integrations, candidate-matching, and the AI strategy behind them.</p>
+                    <div class="tl-tags"><span>Leadership</span><span>AI Strategy</span><span>Team Management</span></div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section id="achievements" class="band-dark section-pad">
+    <div class="section-inner">
+        <div class="section-head">
+            <p class="eyebrow">Achievements</p>
+            <h2>Milestones unlocked.</h2>
+        </div>
         <div class="achievements-grid">
-            <div class="achievement" style="--i:0">
-                <span class="achievement-icon">⚔️</span>
-                <div class="achievement-name">TEAM LEADER</div>
+            <div class="achievement c-cherry reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/team_lead_logo_uncut-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">Team Leader</div>
                 <div class="achievement-desc">Promoted to Head of AI Team — leading the charge.</div>
             </div>
-            <div class="achievement" style="--i:1">
-                <span class="achievement-icon">🤖</span>
-                <div class="achievement-name">AI PIONEER</div>
+            <div class="achievement c-olive reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/sparkles_icon-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">AI Pioneer</div>
                 <div class="achievement-desc">Built AI Chat system.</div>
             </div>
-            <div class="achievement" style="--i:2">
-                <span class="achievement-icon">☁️</span>
-                <div class="achievement-name">CLOUD MAGE</div>
+            <div class="achievement c-butter reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/cloud_icon-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">Cloud Mage</div>
                 <div class="achievement-desc">Deployed and managed full GCP backend infrastructure.</div>
             </div>
-            <div class="achievement" style="--i:3">
-                <span class="achievement-icon">🔐</span>
-                <div class="achievement-name">CYBERSEC SCHOLAR</div>
+            <div class="achievement c-cherry reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/shield_check_icon-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">Cybersec Scholar</div>
                 <div class="achievement-desc">Bachelor's in Cybersecurity — University of Saarland.</div>
             </div>
-            <div class="achievement" style="--i:4">
-                <span class="achievement-icon">🌏</span>
-                <div class="achievement-name">WORLD TRAVELER</div>
+            <div class="achievement c-olive reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/globe_icon-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">World Traveler</div>
                 <div class="achievement-desc">Indonesia → Germany. Unlocked international career.</div>
             </div>
-            <div class="achievement" style="--i:5">
-                <span class="achievement-icon">🧪</span>
-                <div class="achievement-name">QA GUARDIAN</div>
+            <div class="achievement c-butter reveal">
+                <span class="ach-badge"><img class="badge-icon" src="assets/bug_icon-removebg-preview.png" alt="" aria-hidden="true"></span>
+                <div class="achievement-name">QA Guardian</div>
                 <div class="achievement-desc">Mastered E2E testing and CI automation with Cypress.</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact">
-        <h2 class="pixel-h2">[ Contact ]</h2>
-        <div class="contact-list">
-            <div class="contact-row" style="--i:0">
-                <strong>Email:</strong>
-                <a href="mailto:devifaustine.df@gmail.com">devifaustine.df@gmail.com</a>
-            </div>
-            <div class="contact-row" style="--i:1">
-                <strong>GitHub:</strong>
-                <a href="https://github.com/devifaustine" target="_blank" rel="noopener">github.com/devifaustine</a>
-            </div>
-            <div class="contact-row" style="--i:2">
-                <strong>LinkedIn:</strong>
-                <a href="https://linkedin.com/in/devifaustine" target="_blank" rel="noopener">linkedin.com/in/devifaustine</a>
-            </div>
+<section id="contact" class="cta-footer section-pad">
+    <div class="section-inner">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's build something.</h2>
+        <div class="contact-rows">
+            <a class="contact-row" href="mailto:devifaustine.df@gmail.com">
+                <span><span class="k">Email</span> — devifaustine.df@gmail.com</span>
+                <span class="arrow">↗</span>
+            </a>
+            <a class="contact-row" href="https://github.com/devifaustine" target="_blank" rel="noopener">
+                <span><span class="k">GitHub</span> — github.com/devifaustine</span>
+                <span class="arrow">↗</span>
+            </a>
+            <a class="contact-row" href="https://linkedin.com/in/devifaustine" target="_blank" rel="noopener">
+                <span><span class="k">LinkedIn</span> — linkedin.com/in/devifaustine</span>
+                <span class="arrow">↗</span>
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer><span class="star-accent">★ </span>© 2026 Devi Faustine. All rights reserved.<span class="star-accent"> ★</span></footer>
-</div>
+<footer class="site-foot">
+    <span>© 2026 Devi Faustine</span>
+    <span>Made in Indonesia, built in Germany</span>
+</footer>
 
 <script src="portfolio.js"></script>
 </body>

@@ -2,28 +2,6 @@
 // DATA
 // ════════════════════════════════════════
 
-const WORLD_WIDTH = 4200;
-const GROUND_Y    = 64;   // px from bottom of viewport to walking surface
-const SPEED       = 6;    // px per frame
-const GRAVITY     = -0.65;
-const JUMP_V      = 13;
-
-const STATIONS = [
-    { x: 80,   icon: '🏡', title: 'INDONESIA',            period: '► Origin',                    body: 'Made in Indonesia :D — home base, level 1.', item: null },
-    { x: 620,  icon: '📜', title: 'GEMA SPRACHENZENTRUM', period: '► Language Prep',             body: 'Studied German to prepare for life abroad.', item: 'B2 ZERTIFIKAT +1' },
-    { x: 1160, icon: '🛂', title: 'DEUTSCHE BOTSCHAFT',   period: '► Visa Process',              body: 'Applied for a student visa at the German Embassy in Indonesia.', item: 'VISA +1' },
-    { x: 1700, icon: '✈️', title: 'FLIGHT TO GERMANY',    period: '► Indonesia → Germany',       body: 'Boarded the flight — unlocked international career.', item: null, isFlight: true },
-    { x: 2240, icon: '🎓', title: 'UNI SAARLAND',         period: '► 2020 – 2024',               body: "Bachelor's Degree in Cybersecurity — Network Security, Cryptography, Secure Software Development.", item: "BACHELOR'S DEGREE +1" },
-    { x: 2780, icon: '🧪', title: 'ILC GMBH',             period: '► 2023 – 2024 · Part-time',   body: 'Test Engineer — E2E testing + Cypress automation, documenting bugs in Redmine.', item: 'QA BADGE +1' },
-    { x: 3320, icon: '💻', title: 'MONA AI GMBH',         period: '► 2024 – 2026',               body: 'Software Developer — AI-powered apps, agents with Langchain + Langgraph on GCP.', item: 'PYTHON +2 · GCP +2' },
-    { x: 3860, icon: '⚔️', title: 'HEAD OF AI TEAM',      period: '► March 2026 – Present',      body: 'Promoted to lead the AI team — strategy, structure, driving innovation.', item: 'LEADERSHIP +1' },
-];
-
-const OBSTACLES = [
-    { x: 350,  size: 30 }, { x: 890,  size: 32 }, { x: 1430, size: 34 },
-    { x: 2510, size: 32 }, { x: 3050, size: 30 }, { x: 3590, size: 34 },
-];
-
 const SKILL_BARS = [
     { name: 'Python',       level: 5 }, { name: 'REST APIs', level: 4 }, { name: 'Google Cloud', level: 4 },
     { name: 'Langchain',    level: 4 }, { name: 'Agentic AI', level: 4 }, { name: 'Flask',       level: 4 },
@@ -44,16 +22,28 @@ const INVENTORY = [
     { name: 'Java',                  detail: 'University projects — board game Dead of Winter + tic tac toe.' },
 ];
 
+const STACK_WORDS = ['Python','GCP','LangChain','Firebase','REST API','Cybersecurity','LangGraph','Cypress','CI/CD','Docker'];
+
+const TERMINAL_LINES = [
+    ['$ whoami', 'prompt'],
+    ['devi.faustine — backend + ai', 'val'],
+    ['$ cat traits.txt', 'prompt'],
+    ['gaming, cooking, baking, reading', 'val'],
+    ['$ status', 'prompt'],
+    ['currently: shipping agents at Mona AI', 'val'],
+];
+
 // ════════════════════════════════════════
-// STATIC SECTION RENDERING
+// SECTION RENDERING
 // ════════════════════════════════════════
 
 function renderSkillBars(container) {
-    container.innerHTML = SKILL_BARS.map(({ name, level }, i) => {
+    if (!container) return;
+    container.innerHTML = SKILL_BARS.map(({ name, level }) => {
         const blocks = Array.from({ length: 5 }, (_, b) =>
             `<div class="skill-bar-block${b < level ? ' filled' : ''}"></div>`
         ).join('');
-        return `<div class="skill-bar-row" style="--i:${i}">
+        return `<div class="skill-bar-row">
             <span class="skill-bar-name">${name}</span>
             <div class="skill-bar-track">${blocks}</div>
             <span class="skill-bar-lvl">LVL ${level}</span>
@@ -62,8 +52,9 @@ function renderSkillBars(container) {
 }
 
 function renderInventory(container, infoPanel, infoText) {
+    if (!container) return;
     container.innerHTML = INVENTORY.map(({ name }, i) =>
-        `<div class="inv-item" style="--i:${i}" role="button" tabindex="0" aria-pressed="false">${name}</div>`
+        `<div class="inv-item" role="button" tabindex="0" aria-pressed="false">${name}</div>`
     ).join('\n');
 
     const items = container.querySelectorAll('.inv-item');
@@ -89,194 +80,73 @@ function renderInventory(container, infoPanel, infoText) {
     });
 }
 
-// ════════════════════════════════════════
-// JOURNEY GAME
-// ════════════════════════════════════════
-
-function buildWorld(world) {
-    // Twinkling stars
-    for (let i = 0; i < 26; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = ((i * 163 + 20) % WORLD_WIDTH) + 'px';
-        star.style.top = (8 + ((i * 53) % 40)) + '%';
-        star.style.animationDuration = (1.6 + (i % 5) * 0.3) + 's';
-        star.style.animationDelay = ((i % 7) * 0.25) + 's';
-        world.appendChild(star);
+function renderMarquee(track) {
+    if (!track) return;
+    let html = '';
+    for (let r = 0; r < 2; r++) {
+        STACK_WORDS.forEach(w => { html += `<span>${w}</span>`; });
     }
-
-    // Ground
-    const groundLine = document.createElement('div');
-    groundLine.className = 'ground-line';
-    const groundFill = document.createElement('div');
-    groundFill.className = 'ground-fill';
-    world.appendChild(groundLine);
-    world.appendChild(groundFill);
-
-    // Bug obstacles
-    OBSTACLES.forEach(ob => {
-        const bug = document.createElement('div');
-        bug.className = 'obstacle';
-        bug.style.left = ob.x + 'px';
-        bug.style.fontSize = ob.size + 'px';
-        bug.textContent = '🐛';
-        world.appendChild(bug);
-    });
-
-    // Stations (dot + card) and their coins
-    STATIONS.forEach((st, i) => {
-        const station = document.createElement('div');
-        station.className = 'station';
-        station.dataset.index = i;
-
-        const dot = document.createElement('div');
-        dot.className = 'station-dot';
-        dot.style.left = st.x + 'px';
-
-        const cardWrap = document.createElement('div');
-        cardWrap.className = 'station-card-wrap';
-        cardWrap.style.left = st.x + 'px';
-        cardWrap.innerHTML = `<div class="station-card">
-            <div class="station-card-head">
-                <span class="station-icon">${st.icon}</span>
-                <span class="station-title">${st.title}</span>
-            </div>
-            <div class="station-period">${st.period}</div>
-            <div class="station-body">${st.body}</div>
-            ${st.item ? `<div class="station-item">${st.item}</div>` : ''}
-        </div>`;
-
-        station.appendChild(dot);
-        station.appendChild(cardWrap);
-        world.appendChild(station);
-
-        const coin = document.createElement('div');
-        coin.className = 'coin';
-        coin.dataset.index = i;
-        coin.style.left = (st.x - 40) + 'px';
-        coin.style.transform = 'translateX(-50%)';
-        coin.textContent = '🪙';
-        world.appendChild(coin);
-    });
-
-    // Player
-    const player = document.createElement('div');
-    player.id = 'player';
-    player.innerHTML = `<div id="player-flip">
-        <img src="char.png" alt="">
-        <div id="player-plane">✈️</div>
-    </div>`;
-    world.appendChild(player);
+    track.innerHTML = html;
 }
 
-function initGame() {
-    const viewport = document.getElementById('game-viewport');
-    const world    = document.getElementById('game-world');
-    const hint     = document.getElementById('game-hint');
-    const progress = document.getElementById('journey-progress');
-    if (!viewport || !world) return;
+function initRoleTicker(track, reduce) {
+    if (!track || reduce) return;
+    const items = track.children.length;
+    let i = 0;
+    setInterval(() => {
+        i = (i + 1) % items;
+        track.style.transform = `translateY(-${i * 1.9}em)`;
+        track.style.transition = 'transform 500ms cubic-bezier(.2,.8,.2,1)';
+    }, 2200);
+}
 
-    world.style.width = WORLD_WIDTH + 'px';
-    buildWorld(world);
-
-    const player     = document.getElementById('player');
-    const playerFlip = document.getElementById('player-flip');
-    const flightX    = (STATIONS.find(s => s.isFlight) || {}).x;
-
-    const keysDown   = new Set();
-    const coinsTaken = new Set();
-    let playerX = 80, playerY = 0, vy = 0, onGround = true, faceDir = 1;
-    let viewportWidth = viewport.clientWidth;
-
-    function updateProgress() {
-        progress.textContent = coinsTaken.size + ' / ' + STATIONS.length + ' coins';
+function initTerminal(el, reduce) {
+    if (!el) return;
+    if (reduce) {
+        el.innerHTML = TERMINAL_LINES.map(([text, cls]) => `<span class="${cls}">${text}</span>`).join('\n');
+        return;
     }
-
-    function tryJump() {
-        if (onGround) { vy = JUMP_V; onGround = false; }
-    }
-
-    function collectCoin(i) {
-        coinsTaken.add(i);
-        world.querySelector(`.coin[data-index="${i}"]`).classList.add('taken');
-        world.querySelector(`.station[data-index="${i}"]`).classList.add('unlocked');
-        updateProgress();
-    }
-
-    function loop() {
-        let dx = 0;
-        if (keysDown.has('ArrowRight') || keysDown.has('KeyD') || keysDown.has('TouchRight')) dx += SPEED;
-        if (keysDown.has('ArrowLeft')  || keysDown.has('KeyA') || keysDown.has('TouchLeft'))  dx -= SPEED;
-        if (keysDown.has('KeyW') || keysDown.has('ArrowUp') || keysDown.has('Space')) tryJump();
-
-        let nextX = Math.max(30, Math.min(WORLD_WIDTH - 30, playerX + dx));
-
-        // Bugs block the path unless the player is above them
-        const halfW = 16;
-        for (const ob of OBSTACLES) {
-            const clearance = ob.size * 0.62;
-            if (playerY < clearance - 6) {
-                const obLeft = ob.x - ob.size / 2, obRight = ob.x + ob.size / 2;
-                if (dx > 0 && playerX <= obLeft + halfW && nextX + halfW > obLeft) nextX = obLeft - halfW;
-                if (dx < 0 && playerX >= obRight - halfW && nextX - halfW < obRight) nextX = obRight + halfW;
-            }
+    let li = 0, ci = 0, buf = '';
+    function typeNext() {
+        if (li >= TERMINAL_LINES.length) return;
+        const [line, cls] = TERMINAL_LINES[li];
+        if (ci === 0) buf += `<span class="${cls}">`;
+        if (ci < line.length) {
+            buf += line[ci];
+            ci++;
+            el.innerHTML = buf + '</span>';
+            setTimeout(typeNext, 22);
+        } else {
+            buf += '</span>\n';
+            el.innerHTML = buf;
+            li++; ci = 0;
+            setTimeout(typeNext, 260);
         }
-
-        vy += GRAVITY;
-        playerY += vy;
-        if (playerY <= 0) { playerY = 0; vy = 0; onGround = true; }
-        else onGround = false;
-
-        // Coins hover above each station marker — jump to grab
-        STATIONS.forEach((st, i) => {
-            if (coinsTaken.has(i)) return;
-            const coinX = st.x - 40, coinY = 90;
-            if (Math.abs(nextX - coinX) < 30 && Math.abs((playerY + 24) - coinY) < 34) collectCoin(i);
-        });
-
-        playerX = nextX;
-        if (dx < 0) faceDir = -1;
-        else if (dx > 0) faceDir = 1;
-
-        const camX = Math.max(0, Math.min(WORLD_WIDTH - viewportWidth, playerX - viewportWidth / 2));
-        world.style.transform = 'translateX(' + (-camX) + 'px)';
-
-        player.style.left = playerX + 'px';
-        player.style.bottom = (GROUND_Y + playerY) + 'px';
-        playerFlip.style.transform = 'translateX(-50%) scaleX(' + faceDir + ')';
-        player.classList.toggle('walking', dx !== 0);
-        player.classList.toggle('flying', flightX !== undefined && Math.abs(playerX - flightX) < 200);
-
-        requestAnimationFrame(loop);
     }
+    setTimeout(typeNext, 500);
+}
 
-    const GAME_KEYS = ['ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD', 'KeyW', 'ArrowUp', 'Space'];
-    viewport.addEventListener('keydown', e => {
-        if (GAME_KEYS.includes(e.code)) { e.preventDefault(); keysDown.add(e.code); }
-    });
-    viewport.addEventListener('keyup', e => keysDown.delete(e.code));
-    viewport.addEventListener('focus', () => hint.classList.add('hidden'));
-    viewport.addEventListener('blur', () => { keysDown.clear(); hint.classList.remove('hidden'); });
-    viewport.addEventListener('click', () => viewport.focus());
+function initSpotlight(reduce) {
+    if (reduce) return;
+    const root = document.documentElement;
+    window.addEventListener('pointermove', e => {
+        root.style.setProperty('--sx', e.clientX + 'px');
+        root.style.setProperty('--sy', e.clientY + 'px');
+    }, { passive: true });
+}
 
-    // Touch controls
-    const btnLeft = document.getElementById('btn-left');
-    const btnRight = document.getElementById('btn-right');
-    const btnJump = document.getElementById('btn-jump');
-    const releaseWalk = () => { keysDown.delete('TouchLeft'); keysDown.delete('TouchRight'); };
-
-    btnLeft.addEventListener('pointerdown', e => { e.preventDefault(); viewport.focus(); keysDown.add('TouchLeft'); });
-    btnRight.addEventListener('pointerdown', e => { e.preventDefault(); viewport.focus(); keysDown.add('TouchRight'); });
-    [btnLeft, btnRight].forEach(b => {
-        b.addEventListener('pointerup', releaseWalk);
-        b.addEventListener('pointerleave', releaseWalk);
-    });
-    btnJump.addEventListener('pointerdown', e => { e.preventDefault(); viewport.focus(); tryJump(); });
-
-    window.addEventListener('resize', () => { viewportWidth = viewport.clientWidth; });
-
-    updateProgress();
-    requestAnimationFrame(loop);
+function initReveal(reduce) {
+    const targets = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || reduce) {
+        targets.forEach(el => el.classList.add('in'));
+        return;
+    }
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.2 });
+    targets.forEach(el => io.observe(el));
 }
 
 // ════════════════════════════════════════
@@ -284,11 +154,17 @@ function initGame() {
 // ════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     renderSkillBars(document.getElementById('skill-bars'));
     renderInventory(
         document.getElementById('inventory'),
         document.getElementById('skill-info'),
         document.getElementById('skill-info-text')
     );
-    initGame();
+    renderMarquee(document.getElementById('marquee-track'));
+    initRoleTicker(document.getElementById('role-track'), reduce);
+    initTerminal(document.getElementById('typed'), reduce);
+    initSpotlight(reduce);
+    initReveal(reduce);
 });
